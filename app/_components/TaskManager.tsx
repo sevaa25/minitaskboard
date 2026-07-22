@@ -1,24 +1,15 @@
 "use client"
 
 import SearchBar from './SearchBar';
-import { TaskStatus } from './Task';
 import { TaskProps } from './Task';
 import { useState } from 'react';
 import TaskList from './TaskList';
-
-const initialTasks = [
-    {id: 0, title: "Get Up", description: "Don't turn the alarm off", status: "todo" as TaskStatus},
-    {id: 1, title: "Take A Shower", description: "Make sure there is water", status: "in-progress" as TaskStatus},
-    {id: 2, title: "Make Breakfast", description: "Break a few eggs to make an omlette", status: "todo" as TaskStatus},
-    {id: 3, title: "Clean the Room", description: "No more dust and dirt", status: "todo" as TaskStatus},
-    {id: 4, title: "Go outside", description: "Touch some grass", status: "todo" as TaskStatus},
-    {id: 5, title: "Read a Book", description: "Chapter 1..", status: "in-progress" as TaskStatus},
-]
+import { initialTasks } from '../data/tasks';
 
 export default function TaskManager(){
     const [searchFilter, setSearchFilter] = useState<string>('all');
     console.log("Current filter:", searchFilter);
-    const filteredTasks = initialTasks.filter((task) => {
+    const filteredTasks: TaskProps[] = initialTasks.filter((task) => {
         if (searchFilter === "all") return true;
         return task.status === searchFilter;
     });
