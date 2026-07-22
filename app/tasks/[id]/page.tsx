@@ -3,13 +3,14 @@ import Link from 'next/link';
 import { TaskProps } from '@/app/_components/Task';
 
 interface PageProps {
-    params: {
-        id: string
-    }
+    params: Promise<{
+        id: string;
+    }>;
 }
 
-export default function PageDetails({params}: PageProps){
-    const taskId = Number(params.id);
+export default async function PageDetails({params}: PageProps){
+    const paramValue = await params;
+    const taskId = Number(paramValue.id);
     const task: TaskProps | undefined = initialTasks.find((t) => t.id === taskId);
 
     if(!task){
