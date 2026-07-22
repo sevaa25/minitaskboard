@@ -11,6 +11,9 @@ const tasks = [
 ]
 
 export default function TaskList(){
+    if (tasks.length <= 0){
+        return <p>No tasks on the board</p>
+    }
     return (
         <ul>
             {tasks.map((task) => 
