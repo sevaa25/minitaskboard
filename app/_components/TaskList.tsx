@@ -1,18 +1,23 @@
 import Task from './Task';
-export type TaskStatus = "todo" | "in-progress" | "done"
+import { TaskStatus } from './Task';
 
+const tasks = [
+    {id: 0, title: "Get Up", description: "Don't turn the alarm off", status: "todo" as TaskStatus},
+    {id: 1, title: "Take A Shower", description: "Make sure there is water", status: "in-progres" as TaskStatus},
+    {id: 2, title: "Make Breakfast", description: "Break a few eggs to make an omlette", status: "todo" as TaskStatus},
+    {id: 3, title: "Clean the Room", description: "No more dust and dirt", status: "todo" as TaskStatus},
+    {id: 4, title: "Go outside", description: "Touch some grass", status: "todo" as TaskStatus},
+    {id: 5, title: "Read a Book", description: "Chapter 1..", status: "in-progress" as TaskStatus},
+]
 
 export default function TaskList(){
     return (
-        <>
-            <ul>
-                <Task id={0} title="Get Up" description="Make sure not to turn the alarm off" status ="done"/>
-                <Task id={1} title="Take A Shower" description="Make sure the water is warm" status ="in-progress"/>
-                <Task id={2} title="Make a Brakfast" description="Break a few eggs to make an omlette" status ="todo"/>
-                <Task id={3} title="Complete a Coding Task" description="Finish before the battery is finished" status ="todo"/>
-                <Task id={4} title="Clean the Room" description="Time to say goodbye to dust and dirt" status ="todo"/>
-                <Task id={5} title="Go outside" description="Touch some grass" status ="todo"/>
-            </ul>
-        </>
+        <ul>
+            {tasks.map((task) => 
+                <Task key={task.id} id={task.id}
+                    title={task.title} description={task.description}
+                    status={task.status}/>
+            )}
+        </ul>
     )
 }

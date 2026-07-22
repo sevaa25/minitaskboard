@@ -1,6 +1,6 @@
-import { TaskStatus } from "./TaskList"
+export type TaskStatus = "todo" | "in-progress" | "done"
 
-interface TaskProps {
+export interface TaskProps {
   id: number;
   title: string;
   description: string;
@@ -9,8 +9,10 @@ interface TaskProps {
 
 export default function Task({id, title, description, status} : TaskProps){
     return (
-        <>
-            
-        </>
+        <li>
+            <h3>Title: {title}</h3>
+            <p>Description: {description}</p>
+            <p>Status: {status}</p>
+        </li>
     )
 }
