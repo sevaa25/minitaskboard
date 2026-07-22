@@ -17,10 +17,12 @@ const initialTasks = [
 
 export default function TaskManager(){
     const [searchFilter, setSearchFilter] = useState<string>('all');
+    console.log("Current filter:", searchFilter);
     const filteredTasks = initialTasks.filter((task) => {
         if (searchFilter === "all") return true;
         return task.status === searchFilter;
     });
+    console.log("Filtered results:", filteredTasks);
     return (
         <>
             <SearchBar val={searchFilter} handleChange={setSearchFilter}/>
