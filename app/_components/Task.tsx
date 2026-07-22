@@ -1,3 +1,4 @@
+import Link from 'next/link';
 export type TaskStatus = "todo" | "in-progress" | "done"
 
 export interface TaskProps {
@@ -10,7 +11,9 @@ export interface TaskProps {
 export default function Task({id, title, description, status} : TaskProps){
     return (
         <li>
-            <h3>Title: {title}</h3>
+            <Link href={`/tasks/${id}`}>
+                <h3>Title: {title}</h3>
+            </Link>
             <p>Description: {description}</p>
             <p>Status: {status}</p>
         </li>
