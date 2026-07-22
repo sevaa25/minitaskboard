@@ -15,7 +15,7 @@ export default function TaskCreationForm() {
         return <p>TaskContext is missing</p>;
     }
 
-  const handleSubmit = (e: React.SubmitEvent) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (title.length <= 4  || description.length <= 0){
         setError("Please enter title/description, so it's > 4 chars");
@@ -37,7 +37,7 @@ export default function TaskCreationForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p>Error: {error}</p>
+      <p>{error}</p>
       <h3>Add a New Task</h3>
       <div>
         <input
