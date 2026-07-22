@@ -1,10 +1,10 @@
-import TaskList from "./_components/TaskList";
+import TaskManager from "./_components/TaskManager";
 
 export default function Home() {
   return (
     <>
       <h1>My Tasks for today: </h1>
-      <TaskList/>
+      <TaskManager/>
     </>
   );
 }
