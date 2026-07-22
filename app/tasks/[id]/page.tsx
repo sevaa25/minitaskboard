@@ -3,11 +3,15 @@ import Link from 'next/link';
 import { TaskProps } from '@/app/_components/Task';
 
 interface PageProps {
-    taskId: number
+    params: {
+        id: string
+    }
 }
 
-export default function PageDetails({taskId}: PageProps){
+export default function PageDetails({params}: PageProps){
+    const taskId = Number(params.id);
     const task: TaskProps | undefined = initialTasks.find((t) => t.id === taskId);
+
     if(!task){
         return(
             <>
