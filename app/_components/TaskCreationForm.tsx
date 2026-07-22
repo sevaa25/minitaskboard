@@ -1,15 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { useTasks } from "@/context/TaskContext";
+import { useState, useContext } from "react";
 import { TaskProps, TaskStatus } from "./Task";
+import { TaskContext } from "@/context/TaskContext";
 
 export default function TaskCreationForm() {
-  const { addTask } = useTasks();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState<TaskStatus>("todo");
   const [error, setError] = useState("");
+  const context = useContext(TaskContext);
+
+  if(!context){
+        return <p>TaskContext is missing</p>;
+    }
 
   const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
@@ -18,16 +22,17 @@ export default function TaskCreationForm() {
         return;
     } 
 
-    const newTask = {
+    context.addTask({
       id: Date.now(), 
       title,
       description,
       status: status
-    };
+    });
 
-    addTask(newTask);
     setTitle("");
     setDescription("");
+    setStatus("todo");
+    setError("");
   };
 
   return (
@@ -43,8 +48,7 @@ export default function TaskCreationForm() {
         />
       </div>
       <div>
-        <input
-          type="text"
+        <textarea
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}

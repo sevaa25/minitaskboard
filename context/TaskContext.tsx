@@ -2,20 +2,29 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import { TaskProps } from "@/app/_components/Task"
-import { initialTasks } from "@/app/data/tasks";
+import { TaskStatus } from "@/app/_components/Task";
 
 interface TaskContextType {
   tasks: TaskProps[];
   addTask: (task: TaskProps) => void;
 }
 
-const TaskContext = createContext<TaskContextType | undefined>(undefined);
+const initialTasks: TaskProps[] = [
+    {id: 0, title: "Get Up", description: "Don't turn the alarm off", status: "todo" as TaskStatus},
+    {id: 1, title: "Take A Shower", description: "Make sure there is water", status: "in-progress" as TaskStatus},
+    {id: 2, title: "Make Breakfast", description: "Break a few eggs to make an omlette", status: "todo" as TaskStatus},
+    {id: 3, title: "Clean the Room", description: "No more dust and dirt", status: "todo" as TaskStatus},
+    {id: 4, title: "Go outside", description: "Touch some grass", status: "todo" as TaskStatus},
+    {id: 5, title: "Read a Book", description: "Chapter 1..", status: "in-progress" as TaskStatus},
+]
+
+export const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
 export const TaskProvider = ({ children }: { children: ReactNode }) => {
   const [tasks, setTasks] = useState<TaskProps[]>(initialTasks);
 
   const addTask = (newTask: TaskProps) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]);
+      setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
   return (
@@ -25,10 +34,3 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useTasks = () => {
-  const context = useContext(TaskContext);
-  if (!context) {
-    throw new Error("useTasks must be used within a TaskProvider");
-  }
-  return context;
-};
