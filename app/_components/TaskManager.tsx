@@ -4,12 +4,13 @@ import SearchBar from './SearchBar';
 import { TaskProps } from './Task';
 import { useState } from 'react';
 import TaskList from './TaskList';
-import { initialTasks } from '../data/tasks';
+import { useTasks } from '@/context/TaskContext';
 
 export default function TaskManager(){
+    const { tasks } = useTasks();
     const [searchFilter, setSearchFilter] = useState<string>('all');
     console.log("Current filter:", searchFilter);
-    const filteredTasks: TaskProps[] = initialTasks.filter((task) => {
+    const filteredTasks: TaskProps[] = tasks.filter((task) => {
         if (searchFilter === "all") return true;
         return task.status === searchFilter;
     });
