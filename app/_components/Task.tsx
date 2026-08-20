@@ -1,5 +1,6 @@
-import Link from 'next/link';
-export type TaskStatus = "todo" | "in-progress" | "done"
+import Link from "next/link";
+
+export type TaskStatus = "todo" | "in-progress" | "done";
 
 export interface TaskProps {
   id: number;
@@ -8,14 +9,27 @@ export interface TaskProps {
   status: TaskStatus;
 }
 
-export default function Task({id, title, description, status} : TaskProps){
-    return (
-        <li>
-            <Link href={`/tasks/${id}`}>
-                <h3>Title: {title}</h3>
-            </Link>
-            <p>Description: {description}</p>
-            <p>Status: {status}</p>
-        </li>
-    )
+export default function Task({ id, title, description, status }: TaskProps) {
+  return (
+    <li className="list-none">
+      <Link
+        href={`/tasks/${id}`}
+        className="block p-3.5 rounded-[25px] border border-border/40 bg-background/50 hover:bg-background hover:border-foreground/20 hover:shadow-md transition-all"
+      >
+        <div className="flex items-center justify-between gap-2">
+          <h3 className="text-sm font-semibold text-card-foreground hover:underline">
+            {title}
+          </h3>
+
+          <span className="text-xs px-2 py-1 rounded-md border border-border/80 bg-white text-card-foreground uppercase">
+            {status.replace("-", " ")}
+          </span>
+        </div>
+
+        <p className="text-xs text-card-foreground/70 mt-1 line-clamp-2">
+          {description}
+        </p>
+      </Link>
+    </li>
+  );
 }
