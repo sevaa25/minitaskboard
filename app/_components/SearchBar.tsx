@@ -5,10 +5,10 @@ interface SearchBarProps {
 
 export default function SearchBar({ val, handleChange }: SearchBarProps) {
   return (
-    <div className="flex items-center justify-between gap-5 pb-3 border-b border-border/20">
+    <div className="flex items-center justify-between pb-3">
       <label
         htmlFor="status-filter"
-        className="text-xs font-semibold uppercase tracking-wider text-card-foreground/70"
+        className="text-sm font-semibold uppercase tracking-wider text-card-foreground/70"
       >
         Filter by status
       </label>
@@ -17,7 +17,7 @@ export default function SearchBar({ val, handleChange }: SearchBarProps) {
         id="status-filter"
         value={val}
         onChange={(e) => handleChange(e.target.value)}
-        className="h-9 px-3 rounded-lg text-xs font-medium bg-background/80 border border-border/40 text-card-foreground shadow-xs transition-colors hover:border-border/70 cursor-pointer"
+        className="h-10 px-3 rounded-lg text-sm bg-background border border-border/70 hover:border-border hover:bg-white shadow-sm transition-all cursor-pointer"
       >
         <option value="all">All Tasks</option>
         <option value="todo">To Do</option>

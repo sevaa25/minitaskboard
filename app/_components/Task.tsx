@@ -14,14 +14,14 @@ export default function Task({ id, title, description, status }: TaskProps) {
     <li className="list-none">
       <Link
         href={`/tasks/${id}`}
-        className="block p-3.5 rounded-[25px] border border-border/40 bg-background/50 hover:bg-background hover:border-foreground/20 hover:shadow-md transition-all"
+        className="block p-4 rounded-2xl border border-border/40 bg-background/50 hover:bg-background hover:border-foreground/20 hover:shadow-md transition-all"
       >
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold text-card-foreground hover:underline">
             {title}
           </h3>
 
-          <span className="text-xs px-2 py-1 rounded-md border border-border/80 bg-white text-card-foreground uppercase">
+          <span className="text-xs p-1.5 rounded-md border border-border/80 bg-white text-card-foreground uppercase">
             {status.replace("-", " ")}
           </span>
         </div>
