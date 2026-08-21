@@ -11,7 +11,7 @@ export interface TaskProps {
 
 export default function Task({ id, title, description, status }: TaskProps) {
   return (
-    <li className="list-none">
+    <li className="list-none" data-testid="task-card">
       <Link
         href={`/tasks/${id}`}
         className="block p-4 rounded-2xl border border-border/40 bg-background/50 hover:bg-background hover:border-foreground/20 hover:shadow-md transition-all"
@@ -21,7 +21,7 @@ export default function Task({ id, title, description, status }: TaskProps) {
             {title}
           </h3>
 
-          <span className="text-xs p-1.5 rounded-md border border-border/80 bg-white text-card-foreground uppercase">
+          <span className="text-xs p-1.5 rounded-md border border-border/80 bg-white text-card-foreground uppercase" data-testid="task-status">
             {status.replace("-", " ")}
           </span>
         </div>
