@@ -40,7 +40,7 @@ test.describe('Unit Testing', () => {
         }
     });
 
-    test.describe('Task Details Navigation', () => {
+    test.describe('Accessing task details', () => {
     
         const selectedTasks = [
             { id: 0, title: "Get Up" },
@@ -50,7 +50,7 @@ test.describe('Unit Testing', () => {
 
         for (const task of selectedTasks) {
             
-            test(`Navigates to details page for: ${task.title}`, async ({ page }) => {
+            test(`Opening details page for: ${task.title}`, async ({ page }) => {
                 await page.goto("http://localhost:3000/");
 
                 const taskCard = page.getByTestId("task-card").filter({ hasText: task.title });

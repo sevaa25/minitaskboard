@@ -78,6 +78,7 @@ export default function TaskCreationForm() {
             value={status}
             onChange={(e) => setStatus(e.target.value as TaskStatus)}
             className="w-full sm:w-48 h-10 px-3 rounded-md text-sm bg-background/80 border border-border/50 text-foreground focus:outline-none focus:ring-1 focus:ring-foreground/30 cursor-pointer"
+            data-testid="task-creation-options"
           >
             <option value="todo">To Do</option>
             <option value="in-progress">In Progress</option>
